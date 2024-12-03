@@ -1,26 +1,31 @@
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native'
 import React, { useState } from 'react'
 import icons from '../constants/icons'
+import { ErrorMessage } from './error_msg';
 const Formfield = ({
     containerStyle = "",
     handleChangeText,
     title,
     placeholder,
     keyboardType = 'none',
-    value = ""
+    value = "",
+    errorMsg = "",
+    isSecureEntry = false,
 }) => {
-    const [showPassword, setShowPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState(isSecureEntry);
 
     return (
         <View className={`${containerStyle} flex gap-2`}>
             <Text className='text-gray-500 font-pmedium text-base'>{title}</Text>
+            <View>
             <View className='relative bg-black-200 px-4 h-16 w-full rounded-lg border-2 border-black-200 focus:border-secondary flex flex-row items-center'>
                 <TextInput
-                    onChange={handleChangeText}
+                    onChangeText={handleChangeText}
                     value={value}
-                    className='w-full h-full'
+                    className='w-full h-full text-white'
                     placeholderTextColor="#7B7B8B"
                     placeholder={placeholder}
+                    secureTextEntry = {showPassword}
                 />
                     {/* keyboardType = {keyboardType}  */}
                 {title === "Password" && (
@@ -34,6 +39,8 @@ const Formfield = ({
                         </View>
                     </TouchableOpacity>
                 )}
+            </View>
+            {errorMsg && <ErrorMessage message={errorMsg} />}
             </View>
         </View>
     )
