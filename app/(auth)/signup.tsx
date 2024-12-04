@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, ScrollView, TouchableHighlight, Alert } from 'react-native'
+import { View, Text, SafeAreaView, ScrollView, TouchableHighlight, Alert, KeyboardAvoidingView, Platform } from 'react-native'
 import React, { useState } from 'react'
 import Formfield from '../../components/form_field'
 import { router } from 'expo-router';
@@ -16,7 +16,7 @@ const SignUp = () => {
   const toast = useToast();
 
   const handleSignUp = async () => {
-
+    router.replace('/profilesetup')
     if (!validateForm()) return;
 
     try {
@@ -29,7 +29,7 @@ const SignUp = () => {
       console.log('Signup successful');
 
       // Navigate to main app
-      router.replace('/(tabs)');
+      router.replace('/(tabs)/home');
     } catch (error) {
       toast.show({
         description: "Something Went Wrong!"
@@ -90,6 +90,7 @@ const SignUp = () => {
     form.errors.find(e => e.field === field)?.message;
 
   return (
+    <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={{ flex: 1 }}>
     <SafeAreaView className='bg-primary h-full'>
       <ScrollView>
         <View className='h-screen flex px-10 gap-5 justify-center'>
@@ -138,6 +139,7 @@ const SignUp = () => {
         </View>
       </ScrollView>
     </SafeAreaView>
+    </KeyboardAvoidingView>
   );
 };
 

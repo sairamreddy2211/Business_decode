@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, ScrollView, Image, TextInput, TouchableHighlight, Button } from 'react-native'
+import { View, Text, SafeAreaView, ScrollView, Image, TextInput, TouchableHighlight, Button, Platform, KeyboardAvoidingView } from 'react-native'
 import React, { useState } from 'react'
 import Formfield from '../../components/form_field'
 import { router } from 'expo-router';
@@ -7,6 +7,8 @@ import { validateEmail, validatePassword } from '@/constants/utils';
 
 const login = () => {
   const handleLogin = async () => {
+    router.replace('/(tabs)/home');
+
     if (!validateForm()) return;
 
     try {
@@ -19,7 +21,7 @@ const login = () => {
       console.log('Login successful');
 
       // Navigate to main app
-      router.replace('/(tabs)');
+      router.replace('/(tabs)/home');
     } catch (error) {
       // setForm(prev => ({
       //   ...prev,
@@ -79,6 +81,7 @@ const login = () => {
 
 
   return (
+    <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={{ flex: 1 }}>
     <SafeAreaView className='bg-primary h-full'>
       <ScrollView>
         <View className='flex mt-40 px-10 gap-5'>
@@ -104,6 +107,7 @@ const login = () => {
         </View>
       </ScrollView>
     </SafeAreaView>
+    </KeyboardAvoidingView>
   )
 }
 

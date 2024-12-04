@@ -11,6 +11,8 @@
 import eyeHide from "../assets/icons/eye-hide.png";
 import eye from "../assets/icons/eye.png";
 // import play from "../assets/icons/play.png";
+import main_logo from '../assets/images/main_logo.png';
+import upload from '../assets/icons/upload.png';
 
 export default {
   // play,
@@ -24,6 +26,8 @@ export default {
   // upload,
   // rightArrow,
   // logout,
+  upload,
+  main_logo,
   eyeHide,
   eye,
 };
