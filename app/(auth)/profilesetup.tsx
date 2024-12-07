@@ -8,7 +8,6 @@ import { ProfileFormState } from '@/models/types';
 
 const ProfileSetup = () => {
   const [form, setForm] = useState<ProfileFormState>({
-    fullName: '',
     location: '',
     userType: 'entrepreneur',
     businessType: '',
@@ -63,10 +62,10 @@ const ProfileSetup = () => {
   const validateForm = (): boolean => {
     let isValid = true;
 
-    if (!form.fullName.trim()) {
-      setError('fullName', 'Full name is required');
-      isValid = false;
-    }
+    // if (!form.fullName.trim()) {
+    //   setError('fullName', 'Full name is required');
+    //   isValid = false;
+    // }
 
     if (!form.location.trim()) {
       setError('location', 'Location is required');
@@ -106,6 +105,7 @@ const ProfileSetup = () => {
         <ScrollView>
           <View className="flex px-6 py-10 gap-5">
             <View className="items-center mb-6">
+            <Text className="text-white text-2xl font-psemibold mt-2">Hi <Text className='text-orange-500'>Sai,</Text> </Text>
             <Text className="text-white text-2xl font-psemibold mt-2">Complete Your Profile</Text>
             <Text className="text-gray-100 text-sm font-pregular">Help us personalize your experience</Text>
               <TouchableOpacity onPress={pickImage} className="mt-4">
@@ -123,13 +123,13 @@ const ProfileSetup = () => {
               
             </View>
 
-            <Formfield
+            {/* <Formfield
               title="Full Name"
               placeholder="Your full name"
               value={form.fullName}
               handleChangeText={(e: string) => handleDataInput(e, 'fullName')}
               errorMsg={getFieldError('fullName')}
-            />
+            /> */}
 
             <Formfield
               title="Location"

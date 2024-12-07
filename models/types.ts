@@ -20,7 +20,6 @@ export interface FormError {
   }
   
   export interface ProfileFormState {
-    fullName: string;
     location: string;
     userType: 'business_owner' | 'entrepreneur';
     businessType: string;
