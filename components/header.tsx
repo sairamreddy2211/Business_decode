@@ -12,7 +12,7 @@ export default function Header() {
         <Text className="text-white text-xl font-psemibold">John Doe</Text>
       </View>
       <TouchableOpacity 
-        onPress={() => router.push('/notifications')} 
+        onPress={() => router.push('/screens/notifications')} 
         className="relative"
       >
         <MaterialCommunityIcons name="bell" size={24} color="#FF9C01" />

@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 import "../global.css";
 import { NativeBaseProvider } from "native-base";
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
@@ -34,13 +35,17 @@ export default function RootLayout() {
 
   return (
     <NativeBaseProvider>
+      <GestureHandlerRootView style={{ flex: 1 }}>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+        <Stack.Screen name="screens/notifications" options={{ headerShown: false }} />
+        <Stack.Screen name="screens/chat/[id]" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
         <Stack.Screen name="index" options={{ headerShown: false }} />
       </Stack>
       <StatusBar style="light" />
+      </GestureHandlerRootView>
     </NativeBaseProvider>
   );
 }
